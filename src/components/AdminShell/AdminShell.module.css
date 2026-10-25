@@ -1,0 +1,148 @@
+/* A responsive, theme-aware navigation shell for the demo administration area. */
+.shell {
+    min-height: 100vh;
+    background: var(--color-background);
+    color: var(--color-text);
+}
+.header {
+    position: sticky;
+    top: 0;
+    z-index: 80;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 18px;
+    min-height: 80px;
+    padding: 15px clamp(20px, 4vw, 68px);
+    border-bottom: 1px solid var(--color-border);
+    background: var(--color-header);
+    backdrop-filter: blur(16px);
+}
+.brand {
+    display: inline-flex;
+    align-items: baseline;
+    gap: 10px;
+    color: var(--color-text);
+    font-size: 20px;
+    font-weight: 800;
+    letter-spacing: 0.1em;
+    text-decoration: none;
+    white-space: nowrap;
+}
+.brand span {
+    color: var(--color-muted);
+    font-size: 9px;
+    letter-spacing: 0.17em;
+}
+.actions {
+    display: flex;
+    align-items: center;
+    gap: 17px;
+}
+.logout {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    min-height: 39px;
+    padding: 8px 13px;
+    border: 1px solid var(--color-border);
+    background: var(--color-surface);
+    color: var(--color-text);
+    cursor: pointer;
+}
+.layout {
+    display: grid;
+    grid-template-columns: 250px minmax(0, 1fr);
+    min-height: calc(100vh - 80px);
+}
+.sidebar {
+    display: flex;
+    flex-direction: column;
+    padding: 34px 18px;
+    border-right: 1px solid var(--color-border);
+    background: var(--color-surface);
+}
+.kicker {
+    margin: 0 10px 12px;
+    color: var(--color-accent);
+    font-size: 9px;
+    font-weight: 700;
+    letter-spacing: 0.16em;
+}
+.sidebar h2 {
+    margin: 0 10px 32px;
+    font-family: "Italiana", Georgia, serif;
+    font-size: 26px;
+    font-weight: 400;
+}
+.sidebar nav {
+    display: grid;
+    gap: 6px;
+}
+.link, .active {
+    display: flex;
+    align-items: center;
+    gap: 13px;
+    padding: 14px;
+    color: var(--color-muted);
+    font-size: 12px;
+    font-weight: 600;
+    text-decoration: none;
+}
+.active, .link:hover {
+    background: var(--color-surface-alt);
+    color: var(--color-accent);
+}
+.sidebarBottom {
+    display: grid;
+    gap: 14px;
+    margin-top: auto;
+    padding: 24px 10px 0;
+}
+.sidebarBottom button {
+    display: flex;
+    align-items: center;
+    gap: 7px;
+    padding: 10px 0;
+    border: none;
+    background: transparent;
+    color: var(--color-muted);
+    font: inherit;
+    font-size: 12px;
+    text-align: left;
+    cursor: pointer;
+}
+.sidebarBottom a {
+    color: var(--color-accent);
+    font-size: 12px;
+    text-decoration: none;
+}
+.content {
+    width: 100%;
+    min-width: 0;
+    max-width: 1500px;
+    margin: 0 auto;
+    padding: clamp(24px, 4vw, 54px);
+}
+.warning {
+    margin-top: 44px;
+    padding-top: 18px;
+    border-top: 1px solid var(--color-border);
+    color: var(--color-muted);
+    font-size: 11px;
+    line-height: 1.8;
+}
+@media (max-width: 900px) {
+    .layout { grid-template-columns: 1fr; }
+    .sidebar { padding: 16px 20px; border-right: 0; border-bottom: 1px solid var(--color-border); }
+    .kicker, .sidebar h2 { display: none; }
+    .sidebar nav { display: flex; flex-wrap: wrap; }
+    .sidebarBottom { display: flex; flex-wrap: wrap; align-items: center; gap: 15px; margin: 0; padding: 6px 13px; }
+}
+@media (max-width: 580px) {
+    .header { flex-wrap: wrap; padding: 15px 20px; }
+    .brand { font-size: 16px; }
+    .brand span { display: none; }
+    .actions { width: 100%; justify-content: space-between; }
+    .link, .active { padding: 10px; font-size: 11px; }
+}

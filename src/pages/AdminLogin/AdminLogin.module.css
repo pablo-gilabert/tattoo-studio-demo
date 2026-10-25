@@ -1,0 +1,258 @@
+/* Aula Studio-inspired two-column layout, adapted to UMBRAL's editorial identity. */
+.page {
+    display: grid;
+    grid-template-columns: 48% 52%;
+    min-height: 100vh;
+    background: var(--color-surface);
+    color: var(--color-text);
+}
+.story {
+    position: relative;
+    overflow: hidden;
+    min-height: 750px;
+    background: linear-gradient(120deg, rgb(13 10 9 / 92%), rgb(42 28 21 / 88%)), url('/images/studio.webp') center / cover;
+    color: #fff2e7;
+}
+.story::after {
+    position: absolute;
+    right: -220px;
+    bottom: -170px;
+    width: 600px;
+    height: 600px;
+    border: 1px solid rgb(255 255 255 / 10%);
+    border-radius: 50%;
+    box-shadow: 0 0 0 90px rgb(255 255 255 / 2%), 0 0 0 180px rgb(255 255 255 / 2%);
+    content: "";
+}
+.storyContent {
+    position: relative;
+    z-index: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    min-height: 100%;
+    padding: clamp(26px, 4vw, 65px);
+}
+.brand {
+    display: flex;
+    align-items: baseline;
+    gap: 12px;
+    color: #fff2e7;
+    font-size: 23px;
+    font-weight: 800;
+    letter-spacing: 0.13em;
+    text-decoration: none;
+}
+.brand span {
+    color: #e7b99b;
+    font-size: 10px;
+    letter-spacing: 0.15em;
+}
+.storyMain {
+    margin: auto 0;
+    padding: 90px 0;
+}
+.kicker, .storyFooter {
+    color: #e8bd9e;
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.19em;
+}
+.story h1 {
+    margin: 26px 0;
+    font-family: "Italiana", Georgia, serif;
+    font-size: clamp(49px, 5.5vw, 90px);
+    font-weight: 400;
+    line-height: 1.1;
+}
+.story h1 em {
+    color: #edbb98;
+    font-style: normal;
+}
+.storyMain > p {
+    max-width: 520px;
+    color: #ddcbbd;
+    font-size: 14px;
+    line-height: 1.9;
+}
+.features {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 28px;
+    margin-top: 62px;
+}
+.features > div {
+    display: grid;
+    max-width: 150px;
+    gap: 14px;
+    font-size: 11px;
+    line-height: 1.5;
+}
+.features svg {
+    color: #e4af89;
+}
+.area {
+    display: flex;
+    flex-direction: column;
+    min-width: 0;
+    background: var(--color-surface);
+}
+.top {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 20px;
+    padding: 35px 45px 0;
+}
+.top > span {
+    color: var(--color-muted);
+    font-size: 10px;
+    letter-spacing: 0.15em;
+}
+.panel {
+    width: min(100%, 510px);
+    margin: auto;
+    padding: 40px 30px;
+}
+.lock {
+    display: grid;
+    place-items: center;
+    width: 48px;
+    height: 48px;
+    margin-bottom: 24px;
+    background: var(--color-surface-alt);
+    color: var(--color-accent);
+}
+.panel h2 {
+    margin: 0;
+    font-family: "Italiana", Georgia, serif;
+    font-size: clamp(35px, 4vw, 53px);
+    font-weight: 400;
+    line-height: 1.14;
+}
+.panel h2 em {
+    color: var(--color-accent);
+    font-style: normal;
+}
+.intro {
+    margin: 17px 0 26px;
+    color: var(--color-muted);
+    font-size: 13px;
+    line-height: 1.8;
+}
+.form, .form label {
+    display: grid;
+    gap: 9px;
+}
+.form {
+    gap: 18px;
+}
+.form label {
+    color: var(--color-text);
+    font-size: 12px;
+    font-weight: 600;
+}
+.form input {
+    width: 100%;
+    height: 48px;
+    padding: 10px 14px;
+    border: 1px solid var(--color-border);
+    background: var(--color-input);
+    color: var(--color-text);
+    outline-color: var(--color-accent);
+}
+.passwordWrapper {
+    position: relative;
+}
+.passwordWrapper input {
+    padding-right: 50px;
+}
+.passwordWrapper button {
+    position: absolute;
+    top: 50%;
+    right: 5px;
+    display: grid;
+    place-items: center;
+    width: 40px;
+    height: 40px;
+    border: 0;
+    background: transparent;
+    color: var(--color-muted);
+    transform: translateY(-50%);
+}
+.submit, .credentials button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    min-height: 48px;
+    padding: 12px 16px;
+    border: 0;
+    background: var(--color-accent);
+    color: var(--color-on-accent);
+    font-weight: 700;
+    cursor: pointer;
+}
+.error {
+    color: #dd8178;
+    font-size: 12px;
+}
+.credentials {
+    display: grid;
+    gap: 11px;
+    margin-top: 28px;
+    padding: 19px;
+    border: 1px solid var(--color-border);
+    background: var(--color-background);
+}
+.credentials strong {
+    font-size: 12px;
+}
+.credentials p {
+    margin: 0;
+    color: var(--color-muted);
+    font-size: 11px;
+    line-height: 1.6;
+}
+.credentials code {
+    color: var(--color-text);
+    font-size: 12px;
+    overflow-wrap: anywhere;
+}
+.credentials button {
+    min-height: 42px;
+    margin-top: 5px;
+    background: var(--color-surface-alt);
+    color: var(--color-text);
+    border: 1px solid var(--color-border);
+    font-size: 12px;
+}
+.back {
+    display: inline-block;
+    margin-top: 22px;
+    color: var(--color-accent);
+    font-size: 12px;
+    text-decoration: none;
+}
+.footer {
+    padding: 17px 35px;
+    color: var(--color-muted);
+    font-size: 10px;
+    line-height: 1.5;
+    text-align: center;
+}
+@media (max-width: 880px) {
+    .page { grid-template-columns: 1fr; }
+    .story { min-height: 0; }
+    .storyContent { padding: 20px; }
+    .storyMain, .storyFooter { display: none; }
+    .top { padding: 20px 24px 0; }
+    .area { min-height: 90vh; }
+    .panel { padding: 38px 22px; }
+}
+@media (max-width: 460px) {
+    .brand { font-size: 17px; }
+    .brand span, .top > span { display: none; }
+    .top { justify-content: flex-end; }
+    .features { gap: 16px; }
+}

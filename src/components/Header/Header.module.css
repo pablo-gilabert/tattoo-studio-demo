@@ -24,7 +24,8 @@
     gap: clamp(0.8rem, 1.5vw, 1.6rem);
 }
 
-.navLink {
+.navLink,
+.adminAccess {
     padding: 0.65rem 0;
     color: var(--color-muted);
     font-size: 0.76rem;
@@ -35,6 +36,7 @@
 }
 
 .navLink:hover,
+.adminAccess:hover,
 .active {
     color: var(--color-accent);
 }
@@ -51,7 +53,7 @@
     cursor: pointer;
 }
 
-@media (max-width: 1130px) {
+@media (max-width: 1300px) {
     .inner {
         min-height: 70px;
     }
@@ -76,7 +78,8 @@
         display: flex;
     }
 
-    .navLink {
+    .navLink,
+    .adminAccess {
         padding: 0.9rem 0;
         font-size: 0.95rem;
     }
@@ -102,4 +105,14 @@
     .actions {
         gap: 0.45rem;
     }
+}
+
+/* The admin sign-in remains visible without replacing the studio booking CTA. */
+.adminAccess {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    color: var(--color-accent);
+    white-space: nowrap;
+    text-decoration: none;
 }

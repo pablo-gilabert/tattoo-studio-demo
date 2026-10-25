@@ -2,8 +2,11 @@ import { useState, type FormEvent } from "react"
 import { ArrowUpRight, Check, Clock3, Copy, Mail, MapPin, MessageCircle } from "lucide-react"
 
 import { PageHero } from "../../components/PageHero/PageHero"
+import { BookingWidget } from "../../components/BookingWidget/BookingWidget"
 import { StudioImage } from "../../components/StudioImage/StudioImage"
-import { useContent } from "../../context/DisplayContext"
+import { useContent, useDisplay } from "../../context/DisplayContext"
+import { useAdmin } from "../../admin/AdminContext"
+import { formatOpeningHours } from "../../admin/AdminScheduling"
 import { Studio, getWhatsAppUrl } from "../../data/SiteContent"
 import { usePageMeta } from "../../hooks/UsePageMeta"
 
@@ -27,6 +30,8 @@ const emptyForm: ContactForm = {
 export function Contact() {
     const t = useContent()
     const c = t.contact
+    const { language } = useDisplay()
+    const { database } = useAdmin()
     const [form, setForm] = useState<ContactForm>(emptyForm)
     const [submittedForm, setSubmittedForm] = useState<ContactForm | null>(null)
     const [copied, setCopied] = useState(false)
@@ -83,7 +88,7 @@ export function Contact() {
                             </div>
                             <div>
                                 <Clock3 size={23} />
-                                <span><strong>{c.hours}</strong><small>{t.schedule}</small></span>
+                                <span><strong>{c.hours}</strong><small>{formatOpeningHours(database, language)}</small></span>
                             </div>
                             <div>
                                 <MessageCircle size={23} />
@@ -183,6 +188,8 @@ export function Contact() {
                     </div>
                 </div>
             </section>
+
+            <BookingWidget />
 
             <section className={styles.photo}>
                 <StudioImage fileName="atelier.webp" alt={c.photoAlt} loading="lazy" />

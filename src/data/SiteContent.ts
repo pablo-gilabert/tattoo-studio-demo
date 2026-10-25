@@ -404,7 +404,7 @@ const English: typeof Spanish = {
         hours: "Opening hours",
         whatsapp: "Sample WhatsApp",
         email: "Fictional email",
-        note: "This studio and its contact details are fictional. The demo does not send messages or take bookings.",
+        note: "This studio and its contact details are fictional. Demo bookings stay in this browser only and are not real appointments.",
         formEyebrow: "SHARE YOUR IDEA",
         formTitle: "Let's start a conversation.",
         name: "Your name",

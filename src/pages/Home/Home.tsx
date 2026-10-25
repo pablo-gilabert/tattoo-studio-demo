@@ -15,6 +15,9 @@ import { SectionHeading } from "../../components/SectionHeading/SectionHeading"
 import { StudioImage } from "../../components/StudioImage/StudioImage"
 import { useContent } from "../../context/DisplayContext"
 import { usePageMeta } from "../../hooks/UsePageMeta"
+import { useAdmin } from "../../admin/AdminContext"
+import { useDisplay } from "../../context/DisplayContext"
+import { formatPrice } from "../../admin/AdminScheduling"
 
 import styles from "./Home.module.css"
 
@@ -24,6 +27,8 @@ const benefitIcons = [Asterisk, Sparkles, ShieldCheck, Flower2]
 export function Home() {
     const t = useContent()
     const c = t.home
+    const { database } = useAdmin()
+    const { language } = useDisplay()
 
     usePageMeta(t.pageNames[0], t.pageDescriptions[0])
 
@@ -98,12 +103,13 @@ export function Home() {
                         </Link>
                     </div>
                     <div className={styles.serviceGrid}>
-                        {t.services.slice(0, 3).map((service) => (
-                            <Link to="/servicios" key={service.number} className={styles.service}>
-                                <small>{service.number} / 04</small>
+                        {database.services.slice(0, 3).map((service, index) => (
+                            <Link to="/servicios" key={service.id} className={styles.service}>
+                                <small>{String(index + 1).padStart(2, "0")} / {String(database.services.length).padStart(2, "0")}</small>
                                 <div>
-                                    <h3>{service.name}</h3>
-                                    <p>{service.summary}</p>
+                                    <h3>{service.name[language]}</h3>
+                                    <p>{service.description[language]}</p>
+                                    <small>{formatPrice(service.price)}</small>
                                 </div>
                                 <ArrowUpRight size={22} />
                             </Link>

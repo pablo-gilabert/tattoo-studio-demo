@@ -1,8 +1,9 @@
 import { useEffect, useState } from "react"
-import { ArrowUpRight, Menu, X } from "lucide-react"
+import { ArrowUpRight, LockKeyhole, Menu, X } from "lucide-react"
 import { NavLink, useLocation } from "react-router-dom"
 
-import { useContent } from "../../context/DisplayContext"
+import { useContent, useDisplay } from "../../context/DisplayContext"
+import { adminText } from "../../admin/AdminI18n"
 import { Brand } from "../Brand/Brand"
 import { DisplayControls } from "../DisplayControls/DisplayControls"
 
@@ -13,6 +14,7 @@ const paths = ["/", "/estudio", "/artistas", "/galeria", "/servicios", "/contact
 // Responsive navigation closes after route changes and Escape key presses.
 export function Header() {
     const t = useContent()
+    const { language } = useDisplay()
     const { pathname } = useLocation()
     const [menuOpen, setMenuOpen] = useState(false)
 
@@ -52,6 +54,9 @@ export function Header() {
                             {t.navigation[index]}
                         </NavLink>
                     ))}
+                    <NavLink to="/admin/login" className={styles.adminAccess}>
+                        <LockKeyhole size={15} /> {adminText(language, "loginNav")}
+                    </NavLink>
                     <NavLink to="/contacto" className={`${styles.mobileBooking} button button-accent`}>
                         {t.booking} <ArrowUpRight size={16} />
                     </NavLink>

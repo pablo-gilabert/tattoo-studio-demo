@@ -1,7 +1,9 @@
 import { ArrowRight, ArrowUpRight, Instagram, Mail, MapPin } from "lucide-react"
 import { Link } from "react-router-dom"
 
-import { useContent } from "../../context/DisplayContext"
+import { useContent, useDisplay } from "../../context/DisplayContext"
+import { useAdmin } from "../../admin/AdminContext"
+import { formatOpeningHours } from "../../admin/AdminScheduling"
 import { Studio } from "../../data/SiteContent"
 import { Brand } from "../Brand/Brand"
 
@@ -12,6 +14,8 @@ const paths = ["/", "/estudio", "/artistas", "/galeria", "/servicios", "/contact
 // Contact details stay visibly fictional to prevent confusion about the demo.
 export function Footer() {
     const t = useContent()
+    const { language } = useDisplay()
+    const { database } = useAdmin()
 
     return (
         <footer className={styles.footer}>
@@ -43,7 +47,7 @@ export function Footer() {
                     <h3>{t.footer.findUs}</h3>
                     <p className={styles.contactLine}><MapPin size={17} />{Studio.address}</p>
                     <p className={styles.contactLine}><Mail size={17} />{Studio.email}</p>
-                    <p>{t.schedule}</p>
+                    <p>{formatOpeningHours(database, language)}</p>
                     <span className={styles.contactLine}>
                         <Instagram size={17} />{Studio.instagram}<ArrowUpRight size={14} />
                     </span>

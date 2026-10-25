@@ -4,6 +4,7 @@ import { BrowserRouter } from "react-router-dom"
 
 import { App } from "./App"
 import { DisplayProvider } from "./context/DisplayContext"
+import { AdminProvider } from "./admin/AdminContext"
 
 import "./styles/Global.css"
 
@@ -17,11 +18,13 @@ if (!container) {
 createRoot(container).render(
     <StrictMode>
         <DisplayProvider>
-            <BrowserRouter
-                future={{ v7_startTransition: true, v7_relativeSplatPath: true }}
-            >
-                <App />
-            </BrowserRouter>
+            <AdminProvider>
+                <BrowserRouter
+                    future={{ v7_startTransition: true, v7_relativeSplatPath: true }}
+                >
+                    <App />
+                </BrowserRouter>
+            </AdminProvider>
         </DisplayProvider>
     </StrictMode>,
 )

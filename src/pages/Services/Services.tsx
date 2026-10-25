@@ -7,6 +7,9 @@ import { SectionHeading } from "../../components/SectionHeading/SectionHeading"
 import { StudioImage } from "../../components/StudioImage/StudioImage"
 import { useContent } from "../../context/DisplayContext"
 import { usePageMeta } from "../../hooks/UsePageMeta"
+import { useAdmin } from "../../admin/AdminContext"
+import { formatPrice } from "../../admin/AdminScheduling"
+import { useDisplay } from "../../context/DisplayContext"
 
 import styles from "./Services.module.css"
 
@@ -14,6 +17,8 @@ import styles from "./Services.module.css"
 export function Services() {
     const t = useContent()
     const c = t.servicesPage
+    const { database } = useAdmin()
+    const { language } = useDisplay()
     const [openQuestion, setOpenQuestion] = useState<number | null>(0)
 
     usePageMeta(t.pageNames[4], t.pageDescriptions[4])
@@ -34,17 +39,18 @@ export function Services() {
                         title={<>{c.listTitle} <em>{c.listEmphasis}</em></>}
                     />
                     <div className={styles.list}>
-                        {t.services.map((service) => (
-                            <article className={styles.row} key={service.number}>
-                                <span>{service.number}</span>
+                        {database.services.map((service, index) => (
+                            <article className={styles.row} key={service.id}>
+                                <span>{String(index + 1).padStart(2, "0")}</span>
                                 <div>
-                                    <h3>{service.name}</h3>
-                                    <p>{service.description}</p>
+                                    <h3>{service.name[language]}</h3>
+                                    <p>{service.description[language]}</p>
+                                    <strong>{formatPrice(service.price)} · {service.duration} min</strong>
                                 </div>
                                 <Link
                                     to="/contacto"
                                     className="icon-circle"
-                                    aria-label={`${c.inquire} ${service.name}`}
+                                    aria-label={`${c.inquire} ${service.name[language]}`}
                                 >
                                     <ArrowUpRight size={21} />
                                 </Link>
