@@ -1,0 +1,57 @@
+.biographies {
+    background: var(--color-surface-alt);
+}
+
+.rows {
+    margin-top: 3rem;
+    border-top: 1px solid var(--color-border);
+}
+
+.row {
+    display: grid;
+    grid-template-columns: 45px 1.1fr 1.2fr 45px;
+    align-items: center;
+    gap: 2rem;
+    padding: 2rem 0;
+    border-bottom: 1px solid var(--color-border);
+}
+
+.row > span {
+    color: var(--color-accent);
+}
+
+.row h3 {
+    margin: 0 0 0.4rem;
+    font-family: "Italiana", Georgia, serif;
+    font-size: clamp(1.8rem, 3vw, 3rem);
+    font-weight: 400;
+}
+
+.row small,
+.row p {
+    color: var(--color-muted);
+}
+
+.row p {
+    line-height: 1.85;
+}
+
+.row a {
+    color: var(--color-accent);
+}
+
+@media (max-width: 750px) {
+    .row {
+        grid-template-columns: 26px 1fr 35px;
+        gap: 1rem;
+    }
+
+    .row p {
+        grid-column: 2;
+    }
+
+    .row a {
+        grid-column: 3;
+        grid-row: 1;
+    }
+}

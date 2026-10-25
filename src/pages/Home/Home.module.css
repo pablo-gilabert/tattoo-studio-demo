@@ -1,0 +1,354 @@
+.hero {
+    position: relative;
+    display: flex;
+    align-items: stretch;
+    min-height: min(830px, 88vh);
+    overflow: hidden;
+    background: #161310;
+    color: #fff;
+}
+
+.heroImage,
+.heroShade {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+}
+
+.heroImage {
+    object-fit: cover;
+    object-position: center;
+}
+
+.heroShade {
+    background: linear-gradient(90deg, rgb(8 7 7 / 88%), rgb(8 7 7 / 50%) 64%, rgb(8 7 7 / 20%));
+}
+
+.heroInner {
+    position: relative;
+    z-index: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 100%;
+    padding-top: 7rem;
+    padding-bottom: 6rem;
+}
+
+.heroContent {
+    max-width: 840px;
+}
+
+.heroContent h1,
+.closing h2 {
+    margin: 1.9rem 0 1.6rem;
+    font-family: "Italiana", Georgia, serif;
+    font-size: clamp(4rem, 8vw, 9.2rem);
+    font-weight: 400;
+    letter-spacing: -0.04em;
+    line-height: 1;
+}
+
+.heroContent h1 em,
+.closing h2 em {
+    color: #dea67f;
+    font-style: normal;
+}
+
+.heroContent p,
+.closing p {
+    max-width: 570px;
+    color: #e4d8cf;
+    font-size: clamp(1rem, 1.4vw, 1.17rem);
+    line-height: 1.85;
+}
+
+.actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.8rem;
+    margin-top: 2.1rem;
+}
+
+.scroll {
+    position: absolute;
+    bottom: 2rem;
+    left: 0;
+    display: flex;
+    align-items: center;
+    gap: 0.7rem;
+    color: #e4d8cf;
+    font-size: 0.65rem;
+    letter-spacing: 0.18em;
+    text-decoration: none;
+}
+
+.heroVertical {
+    position: absolute;
+    top: 50%;
+    right: 2.5%;
+    color: #e4d8cf;
+    font-size: 0.7rem;
+    letter-spacing: 0.24em;
+    writing-mode: vertical-rl;
+}
+
+.heroIndex {
+    position: absolute;
+    right: 2.5%;
+    bottom: 2rem;
+    color: #e4d8cf;
+    font-size: 0.7rem;
+    letter-spacing: 0.2em;
+}
+
+.benefits {
+    border-bottom: 1px solid var(--color-border);
+    background: var(--color-surface-alt);
+}
+
+.benefitsGrid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+}
+
+.benefitsGrid > div {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.8rem;
+    padding: 2rem 1rem;
+    border-right: 1px solid var(--color-border);
+    color: var(--color-text);
+    font-size: 0.82rem;
+    font-weight: 600;
+}
+
+.benefitsGrid svg {
+    flex-shrink: 0;
+    color: var(--color-accent);
+}
+
+.benefitsGrid > div:last-child {
+    border-right: 0;
+}
+
+.introGrid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    align-items: center;
+    gap: clamp(3rem, 8vw, 9rem);
+}
+
+.introPhoto {
+    position: relative;
+    height: clamp(430px, 47vw, 680px);
+    background: var(--color-control);
+}
+
+.introPhoto img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.introPhoto span {
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    padding: 1rem 1.5rem;
+    background: var(--color-surface);
+    color: var(--color-accent);
+    font-size: 0.66rem;
+    letter-spacing: 0.13em;
+}
+
+.introCopy > p {
+    max-width: 560px;
+    margin: 1.5rem 0 2rem;
+    color: var(--color-muted);
+    line-height: 1.9;
+}
+
+.craft {
+    background: var(--color-surface-alt);
+}
+
+.serviceGrid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 1rem;
+}
+
+.service {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    gap: 4rem;
+    min-height: 315px;
+    padding: 2rem;
+    border: 1px solid var(--color-border);
+    background: var(--color-surface);
+    color: var(--color-text);
+    text-decoration: none;
+    transition: border-color 0.2s ease, transform 0.2s ease;
+}
+
+.service:hover {
+    border-color: var(--color-accent);
+    transform: translateY(-3px);
+}
+
+.service small {
+    color: var(--color-accent);
+    font-size: 0.76rem;
+    letter-spacing: 0.16em;
+}
+
+.service h3 {
+    margin: 0 0 0.7rem;
+    font-family: "Italiana", Georgia, serif;
+    font-size: clamp(2rem, 3vw, 3.2rem);
+    font-weight: 400;
+}
+
+.service p {
+    color: var(--color-muted);
+    line-height: 1.8;
+}
+
+.service > svg {
+    position: absolute;
+    top: 2rem;
+    right: 2rem;
+    color: var(--color-accent);
+}
+
+.team {
+    background: var(--color-surface-alt);
+}
+
+.quotes {
+    background: var(--color-surface);
+}
+
+.quoteGrid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 1.4rem;
+    margin-top: 2.5rem;
+}
+
+.quote {
+    display: flex;
+    flex-direction: column;
+    min-height: 325px;
+    margin: 0;
+    padding: 2rem;
+    border: 1px solid var(--color-border);
+    background: var(--color-surface-alt);
+}
+
+.quoteSymbol {
+    color: var(--color-accent);
+    font-family: Georgia, serif;
+    font-size: 4rem;
+    line-height: 0.8;
+}
+
+.quote blockquote {
+    flex: 1;
+    margin: 2rem 0;
+    font-family: "Italiana", Georgia, serif;
+    font-size: 1.65rem;
+    line-height: 1.35;
+}
+
+.quote figcaption {
+    display: flex;
+    flex-direction: column;
+    gap: 0.3rem;
+}
+
+.quote small {
+    color: var(--color-muted);
+}
+
+.closing {
+    position: relative;
+    padding: 9rem 0;
+    overflow: hidden;
+    background: #161310;
+    color: #fff;
+}
+
+.closing > img {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    opacity: 0.3;
+}
+
+.closing > div {
+    position: relative;
+    z-index: 1;
+}
+
+.closing h2 {
+    font-size: clamp(3.5rem, 7vw, 7.5rem);
+}
+
+.closing p {
+    margin-bottom: 2rem;
+}
+
+@media (max-width: 900px) {
+    .benefitsGrid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .introGrid {
+        grid-template-columns: 1fr;
+    }
+
+    .introPhoto {
+        height: 500px;
+    }
+
+    .serviceGrid,
+    .quoteGrid {
+        grid-template-columns: 1fr 1fr;
+    }
+}
+
+@media (max-width: 660px) {
+    .hero {
+        min-height: 700px;
+    }
+
+    .heroContent h1 {
+        font-size: clamp(3.2rem, 14vw, 5rem);
+    }
+
+    .heroVertical {
+        display: none;
+    }
+
+    .serviceGrid,
+    .quoteGrid {
+        grid-template-columns: 1fr;
+    }
+
+    .introPhoto {
+        height: 380px;
+    }
+
+    .benefitsGrid > div {
+        justify-content: flex-start;
+        font-size: 0.75rem;
+    }
+}

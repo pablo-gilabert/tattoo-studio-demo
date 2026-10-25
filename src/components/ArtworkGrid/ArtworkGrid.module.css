@@ -1,0 +1,166 @@
+.filters {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.6rem;
+    margin-bottom: 2.25rem;
+}
+
+.filter {
+    padding: 0.7rem 1.1rem;
+    border: 1px solid var(--color-border);
+    border-radius: 2px;
+    background: transparent;
+    color: var(--color-muted);
+    font: 600 0.76rem "DM Sans", sans-serif;
+    cursor: pointer;
+    transition: background 0.2s ease, color 0.2s ease;
+}
+
+.selected,
+.filter:hover {
+    border-color: var(--color-accent);
+    background: var(--color-accent);
+    color: var(--color-on-accent);
+}
+
+.grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 1.15rem;
+}
+
+.card {
+    position: relative;
+    display: block;
+    height: clamp(230px, 28vw, 440px);
+    padding: 0;
+    overflow: hidden;
+    border: 0;
+    background: var(--color-control);
+    text-align: left;
+    cursor: zoom-in;
+}
+
+.card img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.5s ease;
+}
+
+.card:hover img {
+    transform: scale(1.06);
+}
+
+.overlay {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    gap: 0.8rem;
+    padding: 1.35rem;
+    background: linear-gradient(transparent 45%, rgb(0 0 0 / 82%));
+    color: #fff;
+}
+
+.overlay span {
+    display: flex;
+    flex-direction: column;
+    gap: 0.45rem;
+}
+
+.overlay small,
+.details small {
+    color: #e8b493;
+    font-size: 0.7rem;
+    letter-spacing: 0.1em;
+}
+
+.overlay strong,
+.details strong {
+    font-family: "Italiana", Georgia, serif;
+    font-size: 1.9rem;
+    font-weight: 400;
+}
+
+.backdrop {
+    position: fixed;
+    inset: 0;
+    z-index: 100;
+    display: grid;
+    place-items: center;
+    padding: 1.2rem;
+    background: rgb(5 4 4 / 92%);
+}
+
+.dialog {
+    position: relative;
+    width: min(100%, 850px);
+    max-height: 94vh;
+    background: #1b1816;
+    color: #fff;
+}
+
+.dialog > img {
+    display: block;
+    width: 100%;
+    max-height: 75vh;
+    object-fit: contain;
+}
+
+.close {
+    position: absolute;
+    top: 0.65rem;
+    right: 0.65rem;
+    z-index: 1;
+    padding: 0.65rem;
+    border: none;
+    background: #191615;
+    color: #fff;
+    cursor: pointer;
+}
+
+.details {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    padding: 1.15rem 1.35rem;
+}
+
+.details > div:first-child {
+    display: flex;
+    flex-direction: column;
+    gap: 0.4rem;
+}
+
+.arrows {
+    display: flex;
+    gap: 0.45rem;
+}
+
+.arrows button {
+    padding: 0.55rem;
+    border: 1px solid #6a615c;
+    background: transparent;
+    color: #fff;
+    cursor: pointer;
+}
+
+@media (max-width: 800px) {
+    .grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+}
+
+@media (max-width: 530px) {
+    .grid {
+        grid-template-columns: 1fr;
+    }
+
+    .card {
+        height: 380px;
+    }
+}

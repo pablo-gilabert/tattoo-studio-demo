@@ -1,0 +1,28 @@
+.notFound {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    min-height: 65vh;
+    padding: 5rem 5%;
+    text-align: center;
+}
+
+.notFound h1 {
+    max-width: 900px;
+    margin: 1.5rem 0;
+    font-family: "Italiana", Georgia, serif;
+    font-size: clamp(3.5rem, 7vw, 7rem);
+    font-weight: 400;
+    line-height: 1.1;
+}
+
+.notFound h1 em {
+    color: var(--color-accent);
+    font-style: normal;
+}
+
+.notFound p {
+    margin-bottom: 2rem;
+    color: var(--color-muted);
+}

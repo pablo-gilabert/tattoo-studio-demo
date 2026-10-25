@@ -1,0 +1,25 @@
+.heading {
+    max-width: 740px;
+}
+
+.heading h2 {
+    margin: 1.1rem 0 1.25rem;
+    color: var(--color-text);
+    font-family: "Italiana", Georgia, serif;
+    font-size: clamp(2.7rem, 5.1vw, 5.5rem);
+    font-weight: 400;
+    letter-spacing: -0.025em;
+    line-height: 1.08;
+}
+
+.heading h2 em {
+    color: var(--color-accent);
+    font-style: normal;
+}
+
+.heading p {
+    max-width: 610px;
+    color: var(--color-muted);
+    font-size: 1rem;
+    line-height: 1.85;
+}

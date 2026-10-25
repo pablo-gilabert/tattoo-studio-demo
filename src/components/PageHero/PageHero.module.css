@@ -1,0 +1,50 @@
+.hero {
+    padding: clamp(5.5rem, 11vw, 10rem) 0 clamp(4rem, 7vw, 7rem);
+    border-bottom: 1px solid var(--color-border);
+    background: var(--color-surface);
+}
+
+.inner {
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    gap: 2rem;
+}
+
+.inner h1 {
+    max-width: 920px;
+    margin: 1.4rem 0 1.5rem;
+    color: var(--color-text);
+    font-family: "Italiana", Georgia, serif;
+    font-size: clamp(3.5rem, 8vw, 8.5rem);
+    font-weight: 400;
+    letter-spacing: -0.045em;
+    line-height: 1;
+}
+
+.inner h1 em {
+    color: var(--color-accent);
+    font-style: normal;
+}
+
+.inner p {
+    max-width: 610px;
+    color: var(--color-muted);
+    font-size: clamp(1rem, 1.3vw, 1.15rem);
+    line-height: 1.85;
+}
+
+.counter {
+    flex-shrink: 0;
+    padding-bottom: 0.5rem;
+    color: var(--color-muted);
+    font-size: 0.84rem;
+    letter-spacing: 0.2em;
+}
+
+@media (max-width: 660px) {
+    .inner {
+        align-items: start;
+        flex-direction: column;
+    }
+}

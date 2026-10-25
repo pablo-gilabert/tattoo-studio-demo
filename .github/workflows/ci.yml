@@ -1,21 +1,26 @@
-name: Build verification
+name: Quality checks
+
 on:
-  push:
-    branches: [main]
-  pull_request:
+    push:
+    pull_request:
 
 jobs:
-  build:
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout source
-        uses: actions/checkout@v4
-      - name: Set up Node.js
-        uses: actions/setup-node@v4
-        with:
-          node-version: 22
-      # npm install works even before the first package-lock.json is committed.
-      - name: Install packages
-        run: npm install --no-audit --no-fund
-      - name: Type-check and bundle
-        run: npm run build
+    build:
+        runs-on: ubuntu-latest
+        steps:
+            - name: Check out repository
+              uses: actions/checkout@v4
+
+            - name: Set up Node.js
+              uses: actions/setup-node@v4
+              with:
+                  node-version: 22
+
+            - name: Install dependencies and retrieve demo photography
+              run: npm install
+
+            - name: Check TypeScript types
+              run: npm run typecheck
+
+            - name: Build production bundle
+              run: npm run build

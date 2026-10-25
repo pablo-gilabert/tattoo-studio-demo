@@ -1,0 +1,6 @@
+.disclaimer {
+    margin-top: 2rem;
+    color: var(--color-muted);
+    font-size: 0.8rem;
+    line-height: 1.75;
+}
