@@ -1,20 +1,10 @@
-import { useState, type ImgHTMLAttributes } from "react"
-
-import { OriginalImageBase } from "../../data/SiteContent"
+import type { ImgHTMLAttributes } from "react"
 
 interface StudioImageProps extends Omit<ImgHTMLAttributes<HTMLImageElement>, "src"> {
     fileName: string
 }
 
-// Use the bundled image first, falling back to the original immutable source.
+// Always use bundled project-owned portfolio images; do not re-download legacy assets.
 export function StudioImage({ fileName, ...props }: StudioImageProps) {
-    const [fallback, setFallback] = useState(false)
-
-    return (
-        <img
-            {...props}
-            src={fallback ? `${OriginalImageBase}/${fileName}` : `/images/${fileName}`}
-            onError={() => setFallback(true)}
-        />
-    )
+    return <img src={`/images/${fileName}`} decoding="async" {...props} />
 }

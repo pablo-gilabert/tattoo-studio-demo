@@ -7,6 +7,7 @@ import { formatOpeningHours } from "../../admin/AdminScheduling"
 import { Studio } from "../../data/SiteContent"
 import { Brand } from "../Brand/Brand"
 
+import { TattooMachineIcon } from "../TattooMachineIcon/TattooMachineIcon"
 import styles from "./Footer.module.css"
 
 const paths = ["/", "/estudio", "/artistas", "/galeria", "/servicios", "/contacto"]
@@ -27,7 +28,7 @@ export function Footer() {
                         {t.footer.link} <ArrowRight size={20} />
                     </Link>
                 </div>
-                <span className={styles.star} aria-hidden="true">✳</span>
+                <span className={styles.star} aria-hidden="true"><TattooMachineIcon size={90} /></span>
             </div>
 
             <div className={`container ${styles.columns}`}>

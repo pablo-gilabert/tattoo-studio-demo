@@ -1,11 +1,10 @@
 // Shared contracts keep content and components consistent in both languages.
 export type Language = "es" | "en"
 export type Theme = "dark" | "light"
-export type ArtworkCategory = "Blackwork" | "Fineline" | "Ornamental" | "Realism"
+export type ArtworkCategory = "Blackwork" | "Fineline" | "Ornamental" | "Realism" | "Old School" | "Oriental"
 
 export interface Artwork {
     id: number
-    title: string
     category: ArtworkCategory
     image: string
     alt: string

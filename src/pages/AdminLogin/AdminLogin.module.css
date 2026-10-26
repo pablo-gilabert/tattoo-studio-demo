@@ -10,7 +10,7 @@
     position: relative;
     overflow: hidden;
     min-height: 750px;
-    background: linear-gradient(120deg, rgb(13 10 9 / 92%), rgb(42 28 21 / 88%)), url('/images/studio.webp') center / cover;
+    background: linear-gradient(120deg, rgb(13 10 9 / 92%), rgb(42 28 21 / 88%)), url('/images/login-studio.webp') center / cover;
     color: #fff2e7;
 }
 .story::after {
@@ -35,7 +35,7 @@
 }
 .brand {
     display: flex;
-    align-items: baseline;
+    align-items: center;
     gap: 12px;
     color: #fff2e7;
     font-size: 23px;
@@ -255,4 +255,9 @@
     .brand span, .top > span { display: none; }
     .top { justify-content: flex-end; }
     .features { gap: 16px; }
+}
+
+.brand svg {
+    flex: none;
+    color: #e7b99b;
 }

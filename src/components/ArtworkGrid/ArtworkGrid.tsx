@@ -8,9 +8,9 @@ import type { ArtworkCategory } from "../../types/Content"
 import styles from "./ArtworkGrid.module.css"
 
 type ArtworkFilter = "all" | ArtworkCategory
-const filters: ArtworkFilter[] = ["all", "Blackwork", "Fineline", "Ornamental", "Realism"]
+const filters: ArtworkFilter[] = ["all", "Fineline", "Blackwork", "Ornamental", "Realism", "Old School", "Oriental"]
 
-// Filtering and modal navigation remain entirely client-side for the demo.
+// One distinct image per tattoo category. The optional filter never duplicates cards.
 export function ArtworkGrid({ compact = false }: { compact?: boolean }) {
     const t = useContent()
     const [filter, setFilter] = useState<ArtworkFilter>("all")
@@ -18,13 +18,11 @@ export function ArtworkGrid({ compact = false }: { compact?: boolean }) {
 
     const artworks = t.artworks
     const visibleArtworks = useMemo(() => (
-        (filter === "all" ? artworks : artworks.filter((artwork) => artwork.category === filter))
-            .slice(0, compact ? 6 : undefined)
-    ), [artworks, filter, compact])
+        filter === "all" ? artworks : artworks.filter((artwork) => artwork.category === filter)
+    ), [artworks, filter])
 
     const selected = activeIndex === null ? undefined : visibleArtworks[activeIndex]
 
-    // Lock background scrolling and support arrow/Escape keys while the modal is open.
     useEffect(() => {
         if (activeIndex === null) return
 
@@ -49,32 +47,36 @@ export function ArtworkGrid({ compact = false }: { compact?: boolean }) {
         }
     }, [activeIndex, visibleArtworks.length])
 
-    function selectCategory(category: ArtworkFilter) {
-        setFilter(category)
-        setActiveIndex(null)
-    }
-
     function filterLabel(category: ArtworkFilter) {
         if (category === "all") return t.gallery.all
         if (category === "Realism") return t.gallery.realism
         return category
     }
 
+    function selectCategory(category: ArtworkFilter) {
+        setFilter(category)
+        setActiveIndex(null)
+    }
+
     return (
         <>
-            <div className={styles.filters} aria-label={t.gallery.filterLabel}>
-                {filters.map((category) => (
-                    <button
-                        key={category}
-                        type="button"
-                        className={`${styles.filter} ${filter === category ? styles.selected : ""}`}
-                        aria-pressed={filter === category}
-                        onClick={() => selectCategory(category)}
+            {!compact && (
+                <div className={styles.filterBar}>
+                    <label className={styles.filterLabel} htmlFor="gallery-style-filter">
+                        {t.gallery.filterLabel}
+                    </label>
+                    <select
+                        id="gallery-style-filter"
+                        className={styles.filterSelect}
+                        value={filter}
+                        onChange={(event) => selectCategory(event.target.value as ArtworkFilter)}
                     >
-                        {filterLabel(category)}
-                    </button>
-                ))}
-            </div>
+                        {filters.map((category) => (
+                            <option key={category} value={category}>{filterLabel(category)}</option>
+                        ))}
+                    </select>
+                </div>
+            )}
 
             <div className={styles.grid}>
                 {visibleArtworks.map((artwork, index) => (
@@ -82,16 +84,13 @@ export function ArtworkGrid({ compact = false }: { compact?: boolean }) {
                         key={artwork.id}
                         type="button"
                         className={styles.card}
-                        aria-label={`${t.gallery.openArtwork} ${artwork.title}`}
+                        aria-label={`${t.gallery.openArtwork}: ${filterLabel(artwork.category)}`}
                         onClick={() => setActiveIndex(index)}
                     >
                         <StudioImage fileName={artwork.image} alt={artwork.alt} loading="lazy" />
                         <span className={styles.overlay}>
-                            <span>
-                                <small>{filterLabel(artwork.category)}</small>
-                                <strong>{artwork.title}</strong>
-                            </span>
-                            <Maximize2 size={19} />
+                            <strong>{filterLabel(artwork.category)}</strong>
+                            <Maximize2 size={19} aria-hidden="true" />
                         </span>
                     </button>
                 ))}
@@ -109,7 +108,7 @@ export function ArtworkGrid({ compact = false }: { compact?: boolean }) {
                         className={styles.dialog}
                         role="dialog"
                         aria-modal="true"
-                        aria-label={`${t.gallery.artworkDetail} ${selected.title}`}
+                        aria-label={`${t.gallery.artworkDetail} ${filterLabel(selected.category)}`}
                     >
                         <button
                             type="button"
@@ -122,25 +121,27 @@ export function ArtworkGrid({ compact = false }: { compact?: boolean }) {
                         <StudioImage fileName={selected.image} alt={selected.alt} />
                         <div className={styles.details}>
                             <div>
-                                <small>{filterLabel(selected.category)} · {(activeIndex ?? 0) + 1} / {visibleArtworks.length}</small>
-                                <strong>{selected.title}</strong>
+                                <strong>{filterLabel(selected.category)}</strong>
+                                <small>{(activeIndex ?? 0) + 1} / {visibleArtworks.length}</small>
                             </div>
-                            <div className={styles.arrows}>
-                                <button
-                                    aria-label={t.imagePrevious}
-                                    type="button"
-                                    onClick={() => setActiveIndex((activeIndex! - 1 + visibleArtworks.length) % visibleArtworks.length)}
-                                >
-                                    <ArrowLeft size={19} />
-                                </button>
-                                <button
-                                    aria-label={t.imageNext}
-                                    type="button"
-                                    onClick={() => setActiveIndex((activeIndex! + 1) % visibleArtworks.length)}
-                                >
-                                    <ArrowRight size={19} />
-                                </button>
-                            </div>
+                            {visibleArtworks.length > 1 && (
+                                <div className={styles.arrows}>
+                                    <button
+                                        aria-label={t.imagePrevious}
+                                        type="button"
+                                        onClick={() => setActiveIndex((activeIndex! - 1 + visibleArtworks.length) % visibleArtworks.length)}
+                                    >
+                                        <ArrowLeft size={19} />
+                                    </button>
+                                    <button
+                                        aria-label={t.imageNext}
+                                        type="button"
+                                        onClick={() => setActiveIndex((activeIndex! + 1) % visibleArtworks.length)}
+                                    >
+                                        <ArrowRight size={19} />
+                                    </button>
+                                </div>
+                            )}
                         </div>
                     </div>
                 </div>

@@ -73,7 +73,7 @@ export function Home() {
             <section id="introduccion" className="section-pad">
                 <div className={`container ${styles.introGrid}`}>
                     <div className={styles.introPhoto}>
-                        <StudioImage fileName="studio.webp" alt={c.introImageAlt} loading="lazy" />
+                        <StudioImage fileName="intro-studio.webp" alt={c.introImageAlt} loading="lazy" />
                         <span>UMBRAL · TATTOO ATELIER</span>
                     </div>
                     <div className={styles.introCopy}>

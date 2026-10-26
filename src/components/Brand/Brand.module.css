@@ -9,7 +9,9 @@
 
 .symbol {
     color: var(--color-accent);
-    font-size: 2.45rem;
+    width: 43px;
+    height: 43px;
+    flex: none;
     line-height: 1;
 }
 

@@ -21,6 +21,12 @@ export const Studio = {
     instagram: "@umbral.tattoo.demo",
 } as const
 
+// Open a WhatsApp share draft without addressing any real or fictional phone number.
+// This keeps the portfolio form demonstrative and never sends a message automatically.
+export function getWhatsAppUrl(message: string): string {
+    return `https://api.whatsapp.com/send?text=${encodeURIComponent(message)}`
+}
+
 // Both locale objects provide the same keys, so every UI surface can be translated.
 const Spanish = {
     navigation: ["Inicio", "El estudio", "Artistas", "Galería", "Servicios", "Contacto"],
@@ -132,11 +138,11 @@ const Spanish = {
         eyebrow: "PORTFOLIO",
         title: "Arte sobre",
         emphasis: "la piel.",
-        description: "Cada línea tiene un porqué. Explorá nuestros trabajos de demostración y filtrá por el estilo que más te inspire.",
+        description: "Seis estilos, seis piezas conceptuales creadas con IA y representadas sobre la piel. Explorá cada técnica.",
         workEyebrow: "TRABAJOS SELECCIONADOS",
         workTitle: "Una historia en",
         workEmphasis: "cada trazo.",
-        disclaimer: "Imágenes utilizadas en un proyecto conceptual. No representan trabajos de un estudio existente.",
+        disclaimer: "Tatuajes conceptuales generados con IA para portfolio. No representan trabajos realizados en un estudio real.",
         all: "Todos",
         realism: "Realismo",
         openArtwork: "Ampliar",
@@ -219,19 +225,17 @@ const Spanish = {
         link: "Volver al inicio",
     },
     artworks: [
-        { id: 1, title: "Jardín de tinta", category: "Fineline", image: "botanical.webp", alt: "Tatuaje botánico de peonías sobre el hombro" },
-        { id: 2, title: "Instinto", category: "Blackwork", image: "snake.webp", alt: "Serpiente y rosa tatuadas en negro y gris" },
-        { id: 3, title: "Línea viva", category: "Ornamental", image: "floralDetail.webp", alt: "Detalle ornamental de una flor tatuada" },
-        { id: 4, title: "Trazos de sombra", category: "Realism", image: "craft.webp", alt: "Artista trabajando un tatuaje de gran detalle" },
-        { id: 5, title: "Herencia", category: "Blackwork", image: "ornamental.webp", alt: "Detalle oscuro de un tatuaje de serpiente" },
-        { id: 6, title: "Piel y pétalos", category: "Fineline", image: "portrait.webp", alt: "Retrato con tatuaje floral en brazo y espalda" },
-        { id: 7, title: "Raíces", category: "Ornamental", image: "linework.webp", alt: "Sombreado del diseño de rosa y serpiente" },
-        { id: 8, title: "El oficio", category: "Realism", image: "ritual.webp", alt: "Proceso creativo de un tatuaje con máquina profesional" },
+        { id: 1, category: "Fineline", image: "gallery-fineline.webp", alt: "Tatuaje delicado de flores y estrellas de línea fina negra en el brazo de una persona" },
+        { id: 2, category: "Blackwork", image: "gallery-blackwork.webp", alt: "Tatuaje blackwork de tinta negra sólida que cubre casi todo el hombro y brazo de una persona" },
+        { id: 3, category: "Ornamental", image: "gallery-ornamental.webp", alt: "Tatuaje ornamental de mandala geométrico en negro sobre la espalda y hombro de una persona" },
+        { id: 4, category: "Realism", image: "gallery-realism.webp", alt: "Tatuaje realista a color con el retrato de un perro golden retriever sobre el brazo de una persona" },
+        { id: 5, category: "Old School", image: "gallery-old-school.webp", alt: "Tatuaje tradicional old school a color de águila y rosa roja sobre el brazo de una persona" },
+        { id: 6, category: "Oriental", image: "gallery-oriental.webp", alt: "Tatuaje oriental japonés de máscara roja de oni, flores de cerezo y olas sobre hombro y brazo" },
     ] satisfies Artwork[],
     artists: [
-        { name: "Alma Ríos", specialty: "Fineline · Botánico", description: "Trazos delicados, composiciones naturales y detalles que se descubren de cerca.", image: "portrait.webp" },
-        { name: "Dante Vidal", specialty: "Blackwork · Ornamental", description: "Contrastes profundos, geometrías libres y piezas con personalidad.", image: "craft.webp" },
-        { name: "Vera Montes", specialty: "Realismo · Negro y gris", description: "Texturas, sombras y relatos personales convertidos en imágenes.", image: "session.webp", position: "74% center" },
+        { name: "Alma Ríos", specialty: "Fineline · Botánico", description: "Trazos delicados, composiciones naturales y detalles que se descubren de cerca.", image: "artist-alma.webp" },
+        { name: "Dante Vidal", specialty: "Blackwork · Ornamental", description: "Contrastes profundos, geometrías libres y piezas con personalidad.", image: "artist-dante.webp" },
+        { name: "Vera Montes", specialty: "Realismo · Negro y gris", description: "Texturas, sombras y relatos personales convertidos en imágenes.", image: "artist-vera.webp", position: "65% center" },
     ] satisfies Artist[],
     services: [
         { number: "01", name: "Tatuajes a medida", summary: "Una pieza única, creada desde cero para vos.", description: "Conversamos sobre tu idea, armamos referencias y diseñamos una composición para tu anatomía y tu historia." },
@@ -362,11 +366,11 @@ const English: typeof Spanish = {
         eyebrow: "PORTFOLIO",
         title: "Art on",
         emphasis: "skin.",
-        description: "Every line has a reason. Browse our sample work and filter by the style that inspires you most.",
+        description: "Six styles, six AI-generated conceptual tattoos shown on skin. Explore each technique.",
         workEyebrow: "SELECTED WORK",
         workTitle: "A story in",
         workEmphasis: "every line.",
-        disclaimer: "Images used for a conceptual portfolio project. They do not depict work completed by an existing studio.",
+        disclaimer: "AI-generated conceptual tattoo images for a portfolio. They do not show work completed by a real studio.",
         all: "All",
         realism: "Realism",
         openArtwork: "Enlarge",
@@ -449,19 +453,17 @@ const English: typeof Spanish = {
         link: "Back to home",
     },
     artworks: [
-        { id: 1, title: "Ink Garden", category: "Fineline", image: "botanical.webp", alt: "Botanical peony tattoo on a shoulder" },
-        { id: 2, title: "Instinct", category: "Blackwork", image: "snake.webp", alt: "Snake and rose tattoo in black and gray" },
-        { id: 3, title: "Living Line", category: "Ornamental", image: "floralDetail.webp", alt: "Ornamental floral tattoo detail" },
-        { id: 4, title: "Shadows", category: "Realism", image: "craft.webp", alt: "Artist creating a detailed tattoo" },
-        { id: 5, title: "Heritage", category: "Blackwork", image: "ornamental.webp", alt: "Dark snake tattoo detail" },
-        { id: 6, title: "Skin and Petals", category: "Fineline", image: "portrait.webp", alt: "Portrait with a floral tattoo on arm and back" },
-        { id: 7, title: "Roots", category: "Ornamental", image: "linework.webp", alt: "Shading of a rose and snake design" },
-        { id: 8, title: "The Craft", category: "Realism", image: "ritual.webp", alt: "Creative tattoo process using a professional machine" },
+        { id: 1, category: "Fineline", image: "gallery-fineline.webp", alt: "Delicate black fine-line botanical and star tattoo on a person's upper arm" },
+        { id: 2, category: "Blackwork", image: "gallery-blackwork.webp", alt: "Solid-black blackwork tattoo covering most of a person's shoulder and upper arm" },
+        { id: 3, category: "Ornamental", image: "gallery-ornamental.webp", alt: "Decorative mandala ornamental black tattoo across a person's shoulder and back" },
+        { id: 4, category: "Realism", image: "gallery-realism.webp", alt: "Full-color photorealistic golden retriever portrait tattoo on a person's upper arm" },
+        { id: 5, category: "Old School", image: "gallery-old-school.webp", alt: "Classic color old-school eagle and rose tattoo on a person's upper arm" },
+        { id: 6, category: "Oriental", image: "gallery-oriental.webp", alt: "Japanese traditional tattoo of a red oni mask, cherry blossoms and waves on a person's arm" },
     ],
     artists: [
-        { name: "Alma Ríos", specialty: "Fineline · Botanical", description: "Delicate lines, natural compositions, and details that reveal themselves up close.", image: "portrait.webp" },
-        { name: "Dante Vidal", specialty: "Blackwork · Ornamental", description: "Deep contrasts, free-form geometry, and highly individual pieces.", image: "craft.webp" },
-        { name: "Vera Montes", specialty: "Realism · Black & Grey", description: "Textures, shadows, and personal stories transformed into imagery.", image: "session.webp", position: "74% center" },
+        { name: "Alma Ríos", specialty: "Fineline · Botanical", description: "Delicate lines, natural compositions, and details that reveal themselves up close.", image: "artist-alma.webp" },
+        { name: "Dante Vidal", specialty: "Blackwork · Ornamental", description: "Deep contrasts, free-form geometry, and highly individual pieces.", image: "artist-dante.webp" },
+        { name: "Vera Montes", specialty: "Realism · Black & Grey", description: "Textures, shadows, and personal stories transformed into imagery.", image: "artist-vera.webp", position: "65% center" },
     ],
     services: [
         { number: "01", name: "Custom tattoos", summary: "A one-of-a-kind piece, created just for you.", description: "We discuss your idea, collect references, and design a composition that suits your body and personal story." },
@@ -487,10 +489,4 @@ export const SiteContent = {
     en: English,
 }
 
-// Image URLs remain usable even when an asset has not been cached locally yet.
-export const OriginalImageBase =
-    "https://raw.githubusercontent.com/pablo-gilabert/tattoo-studio-demo/257c3252c854b415ea964e11a707da06db7a27a3/public/images"
 
-export function getWhatsAppUrl(message: string): string {
-    return `https://wa.me/5491100000000?text=${encodeURIComponent(message)}`
-}

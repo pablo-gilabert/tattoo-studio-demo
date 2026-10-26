@@ -147,6 +147,8 @@ export function Contact() {
                                     <option value="Blackwork">Blackwork</option>
                                     <option value="Ornamental">Ornamental</option>
                                     <option value="Realism">{t.gallery.realism}</option>
+                                    <option value="Old School">Old School</option>
+                                    <option value="Oriental">Oriental</option>
                                     <option value="unsure">{c.unsure}</option>
                                 </select>
                             </label>
@@ -192,7 +194,7 @@ export function Contact() {
             <BookingWidget />
 
             <section className={styles.photo}>
-                <StudioImage fileName="atelier.webp" alt={c.photoAlt} loading="lazy" />
+                <StudioImage fileName="contact-studio.webp" alt={c.photoAlt} loading="lazy" />
                 <span>{c.photoCaption}</span>
             </section>
         </>

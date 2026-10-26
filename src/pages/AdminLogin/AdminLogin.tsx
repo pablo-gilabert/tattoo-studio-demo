@@ -6,6 +6,7 @@ import { DEMO_ADMIN, useAdmin } from "../../admin/AdminContext"
 import { adminText } from "../../admin/AdminI18n"
 import { DisplayControls } from "../../components/DisplayControls/DisplayControls"
 import { useDisplay } from "../../context/DisplayContext"
+import { TattooMachineIcon } from "../../components/TattooMachineIcon/TattooMachineIcon"
 import styles from "./AdminLogin.module.css"
 
 // A two-panel sign-in inspired by the Aula Studio demo exposes its fictional admin account.
@@ -31,7 +32,7 @@ export function AdminLogin() {
         <div className={styles.page}>
             <aside className={styles.story}>
                 <div className={styles.storyContent}>
-                    <Link to="/" className={styles.brand}>✳ UMBRAL<span>TATTOO ATELIER</span></Link>
+                    <Link to="/" className={styles.brand}><TattooMachineIcon size={28} /> UMBRAL<span>TATTOO ATELIER</span></Link>
                     <div className={styles.storyMain}>
                         <span className={styles.kicker}>{a("loginEyebrow")}</span>
                         <h1>{a("loginStoryTitle")}<br /><em>{a("loginStoryAccent")}</em></h1>

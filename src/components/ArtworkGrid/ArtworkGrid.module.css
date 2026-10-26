@@ -1,26 +1,32 @@
-.filters {
+.filterBar {
     display: flex;
     flex-wrap: wrap;
-    gap: 0.6rem;
+    align-items: center;
+    gap: 0.85rem 1rem;
     margin-bottom: 2.25rem;
 }
 
-.filter {
-    padding: 0.7rem 1.1rem;
-    border: 1px solid var(--color-border);
-    border-radius: 2px;
-    background: transparent;
+.filterLabel {
     color: var(--color-muted);
-    font: 600 0.76rem "DM Sans", sans-serif;
-    cursor: pointer;
-    transition: background 0.2s ease, color 0.2s ease;
+    font: 600 0.77rem "DM Sans", sans-serif;
+    letter-spacing: 0.04em;
 }
 
-.selected,
-.filter:hover {
-    border-color: var(--color-accent);
-    background: var(--color-accent);
-    color: var(--color-on-accent);
+.filterSelect {
+    min-width: 205px;
+    min-height: 44px;
+    padding: 0.6rem 2rem 0.6rem 0.95rem;
+    border: 1px solid var(--color-border);
+    border-radius: 2px;
+    background: var(--color-control);
+    color: var(--color-text);
+    font: 600 0.82rem "DM Sans", sans-serif;
+    cursor: pointer;
+}
+
+.filterSelect:focus-visible {
+    outline: 2px solid var(--color-accent);
+    outline-offset: 3px;
 }
 
 .grid {
@@ -65,13 +71,6 @@
     color: #fff;
 }
 
-.overlay span {
-    display: flex;
-    flex-direction: column;
-    gap: 0.45rem;
-}
-
-.overlay small,
 .details small {
     color: #e8b493;
     font-size: 0.7rem;
